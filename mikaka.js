@@ -11,7 +11,7 @@
     var APP_NAME = 'mikakaApp';
     var app = angular.module(APP_NAME, []);
 
-    var encodeTable = {
+    var encodeMap = {
         'あ': '#',
         'い': 'E',
         'う': '$',
@@ -58,12 +58,12 @@
         'ん': 'Y'
     };
 
-    var decodeTable = {};
-    for (var k in encodeTable) {
-        decodeTable[encodeTable[k]] = k;
+    var decodeMap = {};
+    for (var k in encodeMap) {
+        decodeMap[encodeMap[k]] = k;
     };
-    //console.log(encodeTable);
-    //console.log(decodeTable);
+    //console.log(encodeMap);
+    //console.log(decodeMap);
 
     app.controller('mikakaAppController', ['$scope', function($scope) {
         // Initial value
@@ -81,8 +81,8 @@
 
         $scope.encode = function(str) {
             return str.split('').map(function(c) {
-                if (c in encodeTable) {
-                    return encodeTable[c];
+                if (c in encodeMap) {
+                    return encodeMap[c];
                 }
                 return $scope.getFallbackCharacter();
             }).join('');
@@ -91,8 +91,8 @@
         $scope.decode = function(str) {
             return str.split('').map(function(c) {
                 c = c.toUpperCase();
-                if (c in decodeTable) {
-                    return decodeTable[c];
+                if (c in decodeMap) {
+                    return decodeMap[c];
                 }
                 return $scope.getFallbackCharacter();
             }).join('');

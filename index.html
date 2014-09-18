@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="mikakaApp" lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>みかか変換</title>
+    <script src="https://code.angularjs.org/1.2.9/angular.min.js"></script>
+    <script src="mikaka.js"></script>
+  </head>
+  <body>
+    <h1>みかか変換</h1>
+    <hr>
+    <div ng-controller="mikakaAppController">
+      <input ng-model="input" type="text" placeholder="ここに入力して下さい"
+        size="50"><br>
+      <input type="radio" ng-model="isEncodeMode" ng-value="true">暗号化モード
+      <input type="radio" ng-model="isEncodeMode" ng-value="false">解読モード<br>
+      <p>結果: {{ mikaka(input) }}</p>
+      <hr>
+      <h2>設定</h2>
+      <small><label>変換できない文字の代わりの文字(省略時は□):</label></small>
+      <input ng-model="fallbackCharacter" type="text" placeholder="" size="1"
+        maxlength="1">
+    </div>
+  </body>
+</html>
+<!-- vim: set et ts=2 sts=2 sw=2 : -->
